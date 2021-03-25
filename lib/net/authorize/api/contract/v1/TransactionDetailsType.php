@@ -5,7 +5,7 @@ namespace net\authorize\api\contract\v1;
 /**
  * Class representing TransactionDetailsType
  *
- * 
+ *
  * XSD Type: transactionDetailsType
  */
 class TransactionDetailsType implements \JsonSerializable
@@ -252,6 +252,26 @@ class TransactionDetailsType implements \JsonSerializable
      * @property \net\authorize\api\contract\v1\NameAndAddressType $shipFrom
      */
     private $shipFrom = null;
+
+    /**
+     * @property string $networkTransId
+     */
+    private $networkTransId = null;
+
+    /**
+     * @property string $originalNetworkTransId
+     */
+    private $originalNetworkTransId = null;
+
+    /**
+     * @property float $originalAuthAmount
+     */
+    private $originalAuthAmount = null;
+
+    /**
+     * @property string $authorizationIndicator
+     */
+    private $authorizationIndicator = null;
 
     /**
      * Gets as transId
@@ -1450,6 +1470,94 @@ class TransactionDetailsType implements \JsonSerializable
         return $this;
     }
 
+    /**
+     * Gets as networkTransId
+     *
+     * @return string
+     */
+    public function getNetworkTransId()
+    {
+        return $this->networkTransId;
+    }
+
+    /**
+     * Sets a new networkTransId
+     *
+     * @param string $networkTransId
+     * @return self
+     */
+    public function setNetworkTransId($networkTransId)
+    {
+        $this->networkTransId = $networkTransId;
+        return $this;
+    }
+
+    /**
+     * Gets as originalNetworkTransId
+     *
+     * @return string
+     */
+    public function getOriginalNetworkTransId()
+    {
+        return $this->originalNetworkTransId;
+    }
+
+    /**
+     * Sets a new originalNetworkTransId
+     *
+     * @param string $originalNetworkTransId
+     * @return self
+     */
+    public function setOriginalNetworkTransId($originalNetworkTransId)
+    {
+        $this->originalNetworkTransId = $originalNetworkTransId;
+        return $this;
+    }
+
+    /**
+     * Gets as originalAuthAmount
+     *
+     * @return float
+     */
+    public function getOriginalAuthAmount()
+    {
+        return $this->originalAuthAmount;
+    }
+
+    /**
+     * Sets a new originalAuthAmount
+     *
+     * @param float $originalAuthAmount
+     * @return self
+     */
+    public function setOriginalAuthAmount($originalAuthAmount)
+    {
+        $this->originalAuthAmount = $originalAuthAmount;
+        return $this;
+    }
+
+    /**
+     * Gets as authorizationIndicator
+     *
+     * @return string
+     */
+    public function getAuthorizationIndicator()
+    {
+        return $this->authorizationIndicator;
+    }
+
+    /**
+     * Sets a new authorizationIndicator
+     *
+     * @param string $authorizationIndicator
+     * @return self
+     */
+    public function setAuthorizationIndicator($authorizationIndicator)
+    {
+        $this->authorizationIndicator = $authorizationIndicator;
+        return $this;
+    }
+
 
     // Json Serialize Code
     public function jsonSerialize(){
@@ -1478,12 +1586,7 @@ class TransactionDetailsType implements \JsonSerializable
                 }
             }
         }
-        if (get_parent_class() == ""){
-            return $values;
-        }
-        else{
-            return array_merge(parent::jsonSerialize(), $values);
-        }
+        return get_parent_class() === false ? $values : array_merge(call_user_func('parent::jsonSerialize'), $values);
     }
     
     // Json Set Code

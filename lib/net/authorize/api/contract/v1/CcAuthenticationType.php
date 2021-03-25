@@ -5,7 +5,7 @@ namespace net\authorize\api\contract\v1;
 /**
  * Class representing CcAuthenticationType
  *
- * 
+ *
  * XSD Type: ccAuthenticationType
  */
 class CcAuthenticationType implements \JsonSerializable
@@ -93,12 +93,7 @@ class CcAuthenticationType implements \JsonSerializable
                 }
             }
         }
-        if (get_parent_class() == ""){
-            return $values;
-        }
-        else{
-            return array_merge(parent::jsonSerialize(), $values);
-        }
+        return get_parent_class() === false ? $values : array_merge(call_user_func('parent::jsonSerialize'), $values);
     }
     
     // Json Set Code

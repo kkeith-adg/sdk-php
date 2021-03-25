@@ -5,7 +5,7 @@ namespace net\authorize\api\contract\v1;
 /**
  * Class representing CustomerPaymentProfileMaskedType
  *
- * 
+ *
  * XSD Type: customerPaymentProfileMaskedType
  */
 class CustomerPaymentProfileMaskedType extends CustomerPaymentProfileBaseType implements \JsonSerializable
@@ -46,6 +46,16 @@ class CustomerPaymentProfileMaskedType extends CustomerPaymentProfileBaseType im
      * @property string[] $subscriptionIds
      */
     private $subscriptionIds = null;
+
+    /**
+     * @property string $originalNetworkTransId
+     */
+    private $originalNetworkTransId = null;
+
+    /**
+     * @property float $originalAuthAmount
+     */
+    private $originalAuthAmount = null;
 
     /**
      * Gets as customerProfileId
@@ -235,6 +245,50 @@ class CustomerPaymentProfileMaskedType extends CustomerPaymentProfileBaseType im
         return $this;
     }
 
+    /**
+     * Gets as originalNetworkTransId
+     *
+     * @return string
+     */
+    public function getOriginalNetworkTransId()
+    {
+        return $this->originalNetworkTransId;
+    }
+
+    /**
+     * Sets a new originalNetworkTransId
+     *
+     * @param string $originalNetworkTransId
+     * @return self
+     */
+    public function setOriginalNetworkTransId($originalNetworkTransId)
+    {
+        $this->originalNetworkTransId = $originalNetworkTransId;
+        return $this;
+    }
+
+    /**
+     * Gets as originalAuthAmount
+     *
+     * @return float
+     */
+    public function getOriginalAuthAmount()
+    {
+        return $this->originalAuthAmount;
+    }
+
+    /**
+     * Sets a new originalAuthAmount
+     *
+     * @param float $originalAuthAmount
+     * @return self
+     */
+    public function setOriginalAuthAmount($originalAuthAmount)
+    {
+        $this->originalAuthAmount = $originalAuthAmount;
+        return $this;
+    }
+
 
     // Json Serialize Code
     public function jsonSerialize(){
@@ -263,12 +317,7 @@ class CustomerPaymentProfileMaskedType extends CustomerPaymentProfileBaseType im
                 }
             }
         }
-        if (get_parent_class() == ""){
-            return $values;
-        }
-        else{
-            return array_merge(parent::jsonSerialize(), $values);
-        }
+        return get_parent_class() === false ? $values : array_merge(call_user_func('parent::jsonSerialize'), $values);
     }
     
     // Json Set Code

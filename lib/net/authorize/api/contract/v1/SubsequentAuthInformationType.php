@@ -5,7 +5,7 @@ namespace net\authorize\api\contract\v1;
 /**
  * Class representing SubsequentAuthInformationType
  *
- * 
+ *
  * XSD Type: subsequentAuthInformation
  */
 class SubsequentAuthInformationType implements \JsonSerializable
@@ -15,6 +15,11 @@ class SubsequentAuthInformationType implements \JsonSerializable
      * @property string $originalNetworkTransId
      */
     private $originalNetworkTransId = null;
+
+    /**
+     * @property float $originalAuthAmount
+     */
+    private $originalAuthAmount = null;
 
     /**
      * @property string $reason
@@ -40,6 +45,28 @@ class SubsequentAuthInformationType implements \JsonSerializable
     public function setOriginalNetworkTransId($originalNetworkTransId)
     {
         $this->originalNetworkTransId = $originalNetworkTransId;
+        return $this;
+    }
+
+    /**
+     * Gets as originalAuthAmount
+     *
+     * @return float
+     */
+    public function getOriginalAuthAmount()
+    {
+        return $this->originalAuthAmount;
+    }
+
+    /**
+     * Sets a new originalAuthAmount
+     *
+     * @param float $originalAuthAmount
+     * @return self
+     */
+    public function setOriginalAuthAmount($originalAuthAmount)
+    {
+        $this->originalAuthAmount = $originalAuthAmount;
         return $this;
     }
 
@@ -93,12 +120,7 @@ class SubsequentAuthInformationType implements \JsonSerializable
                 }
             }
         }
-        if (get_parent_class() == ""){
-            return $values;
-        }
-        else{
-            return array_merge(parent::jsonSerialize(), $values);
-        }
+        return get_parent_class() === false ? $values : array_merge(call_user_func('parent::jsonSerialize'), $values);
     }
     
     // Json Set Code

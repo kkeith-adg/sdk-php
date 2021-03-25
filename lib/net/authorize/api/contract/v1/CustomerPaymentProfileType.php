@@ -5,7 +5,7 @@ namespace net\authorize\api\contract\v1;
 /**
  * Class representing CustomerPaymentProfileType
  *
- * 
+ *
  * XSD Type: customerPaymentProfileType
  */
 class CustomerPaymentProfileType extends CustomerPaymentProfileBaseType implements \JsonSerializable
@@ -30,6 +30,12 @@ class CustomerPaymentProfileType extends CustomerPaymentProfileBaseType implemen
      * @property boolean $defaultPaymentProfile
      */
     private $defaultPaymentProfile = null;
+
+    /**
+     * @property \net\authorize\api\contract\v1\SubsequentAuthInformationType
+     * $subsequentAuthInformation
+     */
+    private $subsequentAuthInformation = null;
 
     /**
      * Gets as payment
@@ -119,6 +125,29 @@ class CustomerPaymentProfileType extends CustomerPaymentProfileBaseType implemen
         return $this;
     }
 
+    /**
+     * Gets as subsequentAuthInformation
+     *
+     * @return \net\authorize\api\contract\v1\SubsequentAuthInformationType
+     */
+    public function getSubsequentAuthInformation()
+    {
+        return $this->subsequentAuthInformation;
+    }
+
+    /**
+     * Sets a new subsequentAuthInformation
+     *
+     * @param \net\authorize\api\contract\v1\SubsequentAuthInformationType
+     * $subsequentAuthInformation
+     * @return self
+     */
+    public function setSubsequentAuthInformation(\net\authorize\api\contract\v1\SubsequentAuthInformationType $subsequentAuthInformation)
+    {
+        $this->subsequentAuthInformation = $subsequentAuthInformation;
+        return $this;
+    }
+
 
     // Json Serialize Code
     public function jsonSerialize(){
@@ -147,12 +176,7 @@ class CustomerPaymentProfileType extends CustomerPaymentProfileBaseType implemen
                 }
             }
         }
-        if (get_parent_class() == ""){
-            return $values;
-        }
-        else{
-            return array_merge(parent::jsonSerialize(), $values);
-        }
+        return get_parent_class() === false ? $values : array_merge(call_user_func('parent::jsonSerialize'), $values);
     }
     
     // Json Set Code
